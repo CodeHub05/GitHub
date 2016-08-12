@@ -110,7 +110,7 @@ else
 	$mysql_link=mysql_connect("localhost","root","") 
 	or die( "Unable to connect to the server");
     mysql_select_db("qualitycarwash");
-	
+	$Password = md5($Password);
 	//create and issue the query
 	$query = "SELECT * from tblcustomer
 	WHERE (Email = '$Email') AND (Password = '$Password')";
@@ -125,6 +125,7 @@ else
 		echo"<h2> Hello $Name </h2>";
 		echo"<h2> Authentication Succeed !!! </h2>";
 		echo"<a href=booking.html> Click Here to go to make a booking </a>"; 
+		echo"<a href=Reset_password.html> Click Here toupdate password</a>"; 
 		}
 	else
 		{

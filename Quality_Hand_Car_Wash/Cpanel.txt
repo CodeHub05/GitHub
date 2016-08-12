@@ -1,0 +1,24 @@
+
+Main Hosting Details
+Control panel username
+b8_18180171
+Control panel password	**********
+Control panel URL
+cpanel.byethost8.com
+MySQL username
+b8_18180171
+MySQL password
+**********
+MySQL hostname
+sql211.byethost8.com
+FTP username
+b8_18180171
+FTP password
+**********
+FTP host name	ftp.byethost8.com
+
+
+Your Website URL's
+Home page
+http://qualitycarwash.byethost8.com
+Database:b8_18180171_carwash

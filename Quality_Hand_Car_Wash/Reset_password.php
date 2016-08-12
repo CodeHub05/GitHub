@@ -1,3 +1,7 @@
+<?php
+//start the new session
+session_start();
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -13,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!--tages-->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="keywords" content=" Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+		<meta name="keywords" content="Steel Industry Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 		Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<!--fonts-->
@@ -48,19 +52,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!--start-top-nav-->
 				<div class="top-search-social-nav">
 					<ul>
-						<li><a href="#"><img src="images/facebook.png" title="Facebook" alt=""></a></li>
-                        <li><a href="#"><img src="images/twitter.png" title="Twitter" alt=""></a></li>
-						<li><a href="#"><img src="images/gpluse.png" title="Googlepluse" alt=""></a></li>
-						<li><a href="#"><img src="images/rss.png" title="Rss" alt=""></a></li>
+						<li class="active"><a href="#"><img src="images/facebook.png" title="Facebook" alt=""> </a>
                         </li>
-                         <a href="login.html"><button type="button">Log in</button></a>
-                         <a href="register.html"><button type="button">Sign Up</button></a>
-
+                         <button type="button">Log in</button> 
                         	
 					</ul>
-
-
-
 				</div>
 				<div class="clearfix"> </div>
 				<!--End-top-nav-->
@@ -88,18 +84,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	            </div>
 				</div>
 			</div>
-		<!--start-image-slider-->
-					<div class="image-slider">
-						<!-- Slideshow 1 -->
-					    <ul class="rslides" id="slider1" name="slider1">
-					      <li><img src="images/slider1.jpg" alt="" width="800" height="450"></li>
-					      <li><img src="images/slider2.jpg" alt="" width="800" height="450"></li>
-					      <li><img src="images/slider3.jpg" alt="" width="800" height="450"></li>
-                           <li><img src="images/slider4.jpg" alt="" width="800" height="450"></li>
-					    </ul>
-						 <!-- Slideshow 2 -->
-					</div>
-					<!--End-image-slider-->
+	
 	<div class="content">
 		<div class="container">
 			<div class="grids">
@@ -109,50 +94,64 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 			</div>
 			<div class="recent-places">
-						<h4> Our Work</h4>
-				<h5> </h5><div class="clearfix"> </div>
-				<div class="col-md-3 holder smooth">
-                 <img src="images/p1.jpg" alt="">
-			    <div class="go-top">
-			        <h3>Image Description</h3>
-			        <p>
-			            This is the description of this image. You may use.
-			        </p>
-			        <a href="#">ReadMore</a>
+				<?php
+//start the new session
+
+
+$Email = $_POST['Email'];
+$_SESSION['Email'] = $Email;
+
+if ($Email=="")  {
+    echo" Invlaid email <a href=sign_up.html> 
+	Click Here to Go Back to Sign up Page </a>";
+}
+else
+	{   
+	$mysql_link=mysql_connect("localhost","root","") 
+	or die( "Unable to connect to the server");
+    mysql_select_db("qualitycarwash");
+	 
+	//create and issue the query
+	$query = "SELECT * from tblcustomer
+	WHERE (Password = '$Password') ";
+	$result = mysql_query($query) or die( "Database Error");
+	//get the number of rows in the result set; should be 1 if a match
+	if (mysql_num_rows($result)==1) {
+    	
+    	$Email=mysql_result($result,0,"Email");
+	
+		mysql_close();
+		$_SESSION['Email'] = $Email;
+		echo "Please re_enter your password ";
+		echo "<form action='update_password.php' method='post' name='form2' class='style2 style3'>
+ 
+Old Password<br>
+<input type='password' name='Password'><br>
+ 
+Password<br>
+
+<input type='password' name='Password'><br>
+ Re-Password<br>
+<input type='text' name='ConfirmPassword'>
+<br>
+
+<br>
+<input type='submit' value='Submit'></form>";
+		
+	}
+	else
+		{
+			echo" <a Invlaid  email <a href=signup.html> </a>";
+		}
+}
+?>
 			    </div>
                 </div>
-                <div class="col-md-3 holder smooth">
-                 <img src="images/p2.jpg" alt="">
-			    <div class="go-top">
-			        <h3>Image Description</h3>
-			        <p>
-			            This is the description of this image. You may use.
-			        </p>
-			        <a href="#">ReadMore</a>
-			    </div>
+              
                 </div>
-                <div class="col-md-3 holder smooth">
-                 <img src="images/p3.jpg" alt="">
-			    <div class="go-top">
-			        <h3>Image Description</h3>
-			        <p>
-			            This is the description of this image. You may use.
-			        </p>
-			        <a href="#">ReadMore</a>
-			    </div>
-                </div>
-                <div class="col-md-3 holder smooth last-grid">
-                 <img src="images/p4.jpg" alt="">
-			    <div class="go-top">
-			        <h3>Image Description</h3>
-			        <p>
-			            This is the description of this image. You may use.
-			        </p>
-			        <a href="#">ReadMore</a>
-			    </div>
-                </div>
-</div>
-</div>
+			</div>
+		</div>
+	</div>
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-3 footer-grid">

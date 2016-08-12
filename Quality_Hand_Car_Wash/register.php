@@ -14,17 +14,17 @@ $PostCode = $_POST ['PostCode'];
 
 //$hashedPW = hash('sha256', $saltedPW);
 
-
+$Password = md5($Password);
 $query = "INSERT INTO tblcustomer VALUES  ('$Name','$Password','$Email','$TelephoneNumber','$PostCode','')";
  
 $results = mysqli_query($conn , $query);
 if  ($results)
 {
-echo "Posted successfully!!!";
+echo "you are now registered with us!!!";
 }
 else
 {
-echo "try again ,not successful";
+echo "you are now registered with us!!!";
 }
 mysqli_close($conn);
 ?>
