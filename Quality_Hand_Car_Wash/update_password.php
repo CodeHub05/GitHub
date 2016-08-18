@@ -106,10 +106,12 @@ $confirmPassword =($_POST['confirmPassword']);
 if ($Password=="")  {
     echo" Invlaid password <a href=sign_up.html> 
 	Click Here to Go Back to Sign up Page </a>";
-	
-	
-	
-}
+	}
+
+ 
+ If(($newPassword!=$confirmPassword) || ($newPassword=="") && ($confirmPassword=="")){
+	echo"password is not valid";
+ }
 else
 	{   
 	$mysql_link=mysql_connect("localhost","root","") 

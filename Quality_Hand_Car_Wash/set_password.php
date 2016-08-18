@@ -102,12 +102,15 @@ $Confirm_Password = $_POST['Confirm_Password'];
 
 
 if (($Password=="") || ($Confirm_Password=="")) {
-    echo" Password required.";
+	echo" Password required.";
+	
+
 }
-If($Password!=$Confirm_Password){
+ 
+ If(($Password!=$Confirm_Password) || ($Password=="") && ($Confirm_Password=="")){
 	echo"password is not valid";
-}
-else
+ }
+else  
 	{  
 $Password = md5($_POST['Password']);
 	$mysql_link=mysql_connect("localhost","root","") 
