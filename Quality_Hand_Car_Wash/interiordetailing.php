@@ -108,18 +108,7 @@ while ($row = mysql_fetch_assoc($results))   {
      
  
 
-
-
-
-
-
-
-
-
-
-
-
-			    </div>
+                </div>
                 </div>
                
                 </div>

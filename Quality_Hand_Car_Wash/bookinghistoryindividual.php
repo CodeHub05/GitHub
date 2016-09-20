@@ -94,55 +94,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 			</div>
 			<div class="recent-places">
-				<?php
+	
+
+			<?php
 //start the new session
 
 
-$Email = $_POST['Email'];
-$_SESSION['Email'] = $Email;
-
-if ($Email=="")  {
-    echo" Invlaid email <a href=sign_up.html> 
-	Click Here to Go Back to Sign up Page </a>";
-}
-else
-	{   
-	$mysql_link=mysql_connect("localhost","root","") 
-	or die( "Unable to connect to the server");
-    mysql_select_db("qualitycarwash");
-	 
-	//create and issue the query
-	$query = "SELECT * from tblcustomer
-	WHERE (Email = '$Email') ";
-	$result = mysql_query($query) or die( "Database Error");
-	//get the number of rows in the result set; should be 1 if a match
-	if (mysql_num_rows($result)==1) {
-    	
-    	$Email=mysql_result($result,0,"Email");
-	
-		mysql_close();
-		$_SESSION['Email'] = $Email;
-		echo "Please re_enter your password ";
-		echo "<form action='set_password.php' method='post' name='form2' class='style2 style3'>
+$conn = mysql_connect("localhost","root","");
+mysql_select_db("qualitycarwash", $conn);
+$query = "Select * from booking where ";
  
+$results = mysql_query($query, $conn);
+while ($row = mysql_fetch_assoc($results))   {
+    
+                
 
- 
-Password<br>
-<input type='password' name='Password'><br>
- Confirm_Password<br>
-<input type='password' name='Confirm_Password'>
-<br>
 
-<br>
-<input type='submit' value='Submit'></form>";
-		
-	}
-	else
-		{
-			echo" <a Invlaid  email <a href=signup.html> </a>";
-		}
+     echo  $row['ContactEmail']."<br />";
+      echo$row['Time']."<br />";
+     echo  $row['ServiceName']."<br />";
+       echo  $row['Date']."<br />";
 }
+
 ?>
+ 
+ 
+
+
+
 			    </div>
                 </div>
               
@@ -150,8 +129,19 @@ Password<br>
 			</div>
 		</div>
 	</div>
+
+
+
 	<div class="footer">
-		<div class="container">
+		
+
+
+
+
+
+
+
+                  <div class="container">
 			<div class="col-md-3 footer-grid">
 				<h3>About us</h3>
 				<p>We are a Hand Car Wash Company Based in Suburban Adelaide</p>

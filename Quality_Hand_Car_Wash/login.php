@@ -55,6 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="active"><a href="#"><img src="images/facebook.png" title="Facebook" alt=""> </a>
                         </li>
                          <button type="button">Log in</button> 
+                       <a href="logout.php"><button type="button">Log out</button></a> 
                         	
 					</ul>
 				</div>
@@ -100,7 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 $Email = $_POST['Email'];
 $Password =$_POST ['Password'];
-
+$_SESSION['login']=0;
 if (($Email=="") || ($Password=="")) {
     echo" Invlaid user name or password <a href=sign_up.html> 
 	Click Here to Go Back to Sign up Page </a>";
@@ -124,12 +125,18 @@ else
 		$_SESSION['Email'] = $Email;
 		echo"<h2> Hello $Name </h2>";
 		echo"<h2> Authentication Succeed !!! </h2>";
-		echo"<a href=booking.html> Click Here to go to make a booking </a>"; 
-		echo"<a href=Reset_password.html> Click Here toupdate password</a>"; 
+		echo"<a href=booking.html> Click Here to go to make a booking </a><br/>"; 
+
+
+                echo "<a href=bookinghistory.php> Click here to see your previous bookings </a><br/>"; 
+                echo "<a href=Reset_password.html> Click here to update password </a><br/>"; 
+				 echo "<a href=cancelbooking.html> Click here to cancel your booking</a><br/>";
+
+
 		}
 	else
 		{
-			echo" Invlaid username or password <a href=signup.html> Click Here to Go Back to Sign up Page Page </a>";
+			echo" Invlaid username or password <a href=signup.html> Click Here to Go Back to Sign up Page</a>";
 		}
 }
 ?>

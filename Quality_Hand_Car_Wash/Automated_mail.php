@@ -8,16 +8,9 @@ $ServiceName= $_POST ['ServiceName'];
 $to      = 'manmeet170@gmail.com';
 $subject = 'the subject';
 $message = '$ContactPerson has booked $ServiceName on $Date at $Time' ;
-
-$mail($to, $subject, $message);
-
-
-
-
-
-
+mail($to, $subject, $message);
 $query = "INSERT INTO booking VALUES  ('','$ContactPerson','$ContactEmail','$Time','$ServiceName','$Date')";
-
+//echo $query;
 $results = mysqli_query($conn , $query);
 if  ($results)
 {
@@ -36,8 +29,3 @@ mysqli_close($conn);
 <body  >
 </body>
 </html>
-
-
-
-
- 

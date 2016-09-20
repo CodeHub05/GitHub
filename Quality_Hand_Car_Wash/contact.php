@@ -1,13 +1,6 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Quality Hand Car Wash: Home</title>
+		<title>Quality Hand Car Wash: Contact Us</title>
 		<link href="css/style.css" rel="stylesheet" type="text/css"  media="all" />
 		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<!--tages-->
@@ -19,21 +12,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!--fonts-->
 		<link href='//fonts.googleapis.com/css?family=Sintony:400,700' rel='stylesheet' type='text/css'>
 		<link href='//fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="css/responsiveslides.css">
 		<script src="js/jquery.min.js"></script>
-		<script src="js/responsiveslides.min.js"></script>
-		  <script>
-		    // You can also use "$(window).load(function() {"
-			    $(function () {
-			      // Slideshow 1
-			      $("#slider1").responsiveSlides({
-			        maxwidth: 1600,
-			        speed: 600
-			      });
-			});
-		  </script>
-<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 	</head>
+	
+	
+	
+	
 	<body>
 		<!--start-wrap-->
 		<div class="header">
@@ -41,24 +26,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<!--start-header-->
 				<!--start-logo-->
 				<div class="logo">
-                  <p><img src="images/Car_Wash_Logo.jpg" width="100" height="96" alt=""/><a href="index.html">Quality Hand Car Wash</a>
-                  </p>
-				</div>
+				 <p><img src="images/Car_Wash_Logo.jpg" width="100" height="96" alt=""/><a href="index.html">Quality Hand Car Wash</a>
+				</p></div>
 				<!--End-logo-->
 				<!--start-top-nav-->
 				<div class="top-search-social-nav">
 					<ul>
-						<li class="active"><a href="#"><img src="images/facebook.png" title="Facebook" alt=""> </a>
+						<li><a href="#"><img src="images/facebook.png" title="Facebook" alt=""></a></li>
+                        <li><a href="#"><img src="images/twitter.png" title="Twitter" alt=""></a></li>
+						<li><a href="#"><img src="images/gpluse.png" title="Googlepluse" alt=""></a></li>
+						<li><a href="#"><img src="images/rss.png" title="Rss" alt=""></a></li>
+						
+						
                         </li>
-                         <button type="button">Log in</button> 
-                        	
+						
+						
+                        <a href="login.html"><button type="button">Log in</button></a>
+<a href="register.html"><button type="button">Sign Up</button></a> 
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
 				<!--End-top-nav-->
-		  </div>
+			</div>
+			<!--End-header-->
 		</div>
-			<!--End-header-->		
+		
+		
 		<div class="top-nav">
 				<div class="container">
 					<div class="navbar-header">
@@ -69,89 +62,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	                <span class="icon-bar"></span>
                 </button>
               </div>
+			  
+			  
 	   			<div id="navbar" class="navbar-collapse collapse">
 	              <ul class="nav navbar-nav">
-	                  <li class="home"><a href="index.html">Home</a></li>
+	                  <li class="home"><a href= "index.html">Home</a></li>
 					  <li class=""><a href="about.html">About Us</a></li>
 					  <li class=""><a href="services.html">Services</a></li>
 					  <li class=""><a href="gallery.html">Gallery</a></li>
 					  <li class="contact"><a href="contact.html">Contact</a></li>	        
 	              </ul>
 	            </div>
+				
+				
+				
 				</div>
 			</div>
-		
-
-
-
-
-	<div class="content">
-		<div class="container">
-
-
+			
 <?php
-$conn = mysql_connect("localhost","root","");
-mysql_select_db("qualitycarwash", $conn);
-$query = "Select name, description from service where sid=1";
+
+$conn = mysqli_connect("localhost","root","","qualitycarwash");
+$Name = $_POST ["Name"];
+$Email= $_POST ["Email"];
+$ContactNumber= $_POST ['ContactNumber'];
+$Subject= $_POST ["Subject"];
+
+
+
+
+
+
+
+$query = "INSERT INTO contact VALUES  ('$Name','$Email','$ContactNumber','$Subject')";
  
-$results = mysql_query($query, $conn);
-while ($row = mysql_fetch_assoc($results))   {
-    
-                
- 
-?>
- 
- 
-<h1 class="text-center"><?php echo$row['name'] ?></h1>
-
-      <p><?php echo$row['description'] ?>    </p>
-     
- 
-
-
-
-
-
-
-
-
-
-
-
-
-			    </div>
-                </div>
-               
-                </div>
-			</div>
-		</div>
-	</div>
-	
-
-
-
-
-
-<?php
+$results = mysqli_query($conn , $query);
+if  ($results)
+{
+echo "you're feedback is sent!!!";
 }
-mysql_close();
+else
+{
+echo "you're feedback is not sent!!!";
+}
+mysqli_close($conn);
 ?>
 
-
-
-<div class="footer">
-		<div class="container">
-			<div class="col-md-3 footer-grid">
-				<h3>About us</h3>
-				<p>We are a Hand Car Wash Company Based in Suburban Adelaide</p>
-				<a href="#">ReadMore</a>
-			</div>			
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-	<div class="copy-right">
-		<p>&copy; 2016 Quality Hand Car Wash. All rights reserved | Design by <a href="https://sites.google.com/site/codehub05/"> CodeHub </a></p> <p> Acknowledgement: Boostrap content taken from <a href="http://w3layouts.com/"> W3layouts </a></p>
-	</div>
-	</body>
+<html>
+<body  >
+</body>
 </html>
-

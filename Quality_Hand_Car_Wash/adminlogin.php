@@ -55,6 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="active"><a href="#"><img src="images/facebook.png" title="Facebook" alt=""> </a>
                         </li>
                          <button type="button">Log in</button> 
+                      <a href="logout.php"><button type="button">Log out</button></a> 
                         	
 					</ul>
 				</div>
@@ -99,10 +100,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 $Email = $_POST['Email'];
-$_SESSION['Email'] = $Email;
+$Password =$_POST ['Password'];
 
-if ($Email=="")  {
-    echo" Invlaid email <a href=sign_up.html> 
+if (($Email=="") || ($Password=="")) {
+    echo" Invlaid user name or password <a href=sign_up.html> 
 	Click Here to Go Back to Sign up Page </a>";
 }
 else
@@ -110,36 +111,32 @@ else
 	$mysql_link=mysql_connect("localhost","root","") 
 	or die( "Unable to connect to the server");
     mysql_select_db("qualitycarwash");
-	 
+	$Password = md5($Password);
 	//create and issue the query
-	$query = "SELECT * from tblcustomer
-	WHERE (Email = '$Email') ";
+	$query = "SELECT * from admin
+	WHERE (Email = 'nav1668@yahoo.com') AND (Password = '30301127')";
 	$result = mysql_query($query) or die( "Database Error");
 	//get the number of rows in the result set; should be 1 if a match
 	if (mysql_num_rows($result)==1) {
-    	
+    
     	$Email=mysql_result($result,0,"Email");
 	
 		mysql_close();
 		$_SESSION['Email'] = $Email;
-		echo "Please re_enter your password ";
-		echo "<form action='set_password.php' method='post' name='form2' class='style2 style3'>
- 
+		echo"<h2> Hello  </h2>";
+		echo"<h2> Authentication Succeed !!! </h2>";
+		echo"<a href=bookingrequests.php> Click Here to see booking requests </a><br/>"; 
 
- 
-Password<br>
-<input type='password' name='Password'><br>
- Confirm_Password<br>
-<input type='password' name='Confirm_Password'>
-<br>
 
-<br>
-<input type='submit' value='Submit'></form>";
-		
-	}
+                echo "<a href=customerdetails.php> Click here to customer details </a><br/>"; 
+			 echo "<a href=feedback.php> Click here to customers messages/feedback </a><br/>"; 
+              
+
+
+		}
 	else
 		{
-			echo" <a Invlaid  email <a href=signup.html> </a>";
+			echo" Invlaid username or password <a href=signup.html> Click Here to Go Back to Sign up Page</a>";
 		}
 }
 ?>

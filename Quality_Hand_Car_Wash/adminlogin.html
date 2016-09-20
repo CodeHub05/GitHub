@@ -1,8 +1,6 @@
-<?php
-//start the new session
-session_start();
-?>
-<!--
+.0. 
+
+.<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -52,9 +50,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!--start-top-nav-->
 				<div class="top-search-social-nav">
 					<ul>
-						<li class="active"><a href="#"><img src="images/facebook.png" title="Facebook" alt=""> </a>
+						<li><a href="#"><img src="images/facebook.png" title="Facebook" alt=""></a></li>
+                        <li><a href="#"><img src="images/twitter.png" title="Twitter" alt=""></a></li>
+						<li><a href="#"><img src="images/gpluse.png" title="Googlepluse" alt=""></a></li>
+						<li><a href="#"><img src="images/rss.png" title="Rss" alt=""></a></li>
                         </li>
-                         <button type="button">Log in</button> 
+                         <a href="adminlogin.html"><button type="button">Log in</button></a>
+<a href="register.html"><button type="button">Sign Up</button></a> 
                         	
 					</ul>
 				</div>
@@ -84,73 +86,55 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	            </div>
 				</div>
 			</div>
-	
+		
+
+
+
+
 	<div class="content">
 		<div class="container">
-			<div class="grids">
-				<h4></h4><h5> </h5>
-<div class="section group">
-  <div class="col-md-3 we-do"> </div>
-</div>
-			</div>
-			<div class="recent-places">
-				<?php
-//start the new session
+	<form action="adminlogin.php" method="post" name="form1" class="style2 style3">
+   <table width="352" height="112" border="0">
+    <tr>
+      <td width="151"><strong>Email </strong></td>
+      <td width="185"><input name="Email" type="text" id="Email" size="30" maxlength="30"></td>
+    </tr>
 
 
-$Email = $_POST['Email'];
-$_SESSION['Email'] = $Email;
 
-if ($Email=="")  {
-    echo" Invlaid email <a href=sign_up.html> 
-	Click Here to Go Back to Sign up Page </a>";
-}
-else
-	{   
-	$mysql_link=mysql_connect("localhost","root","") 
-	or die( "Unable to connect to the server");
-    mysql_select_db("qualitycarwash");
-	 
-	//create and issue the query
-	$query = "SELECT * from tblcustomer
-	WHERE (Email = '$Email') ";
-	$result = mysql_query($query) or die( "Database Error");
-	//get the number of rows in the result set; should be 1 if a match
-	if (mysql_num_rows($result)==1) {
-    	
-    	$Email=mysql_result($result,0,"Email");
-	
-		mysql_close();
-		$_SESSION['Email'] = $Email;
-		echo "Please re_enter your password ";
-		echo "<form action='set_password.php' method='post' name='form2' class='style2 style3'>
- 
+    <tr>
+      <td><strong>Password</strong></td>
+      <td><input name="Password" type="password" id="Password" size="20" maxlength="20"></td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="Submit" value="Login"></td>
+      <td>&nbsp;</td>
+    </tr>
 
- 
-Password<br>
-<input type='password' name='Password'><br>
- Confirm_Password<br>
-<input type='password' name='Confirm_Password'>
-<br>
 
-<br>
-<input type='submit' value='Submit'></form>";
-		
-	}
-	else
-		{
-			echo" <a Invlaid  email <a href=signup.html> </a>";
-		}
-}
-?>
+
+  </table>
+</form>
 			    </div>
+<a href=Change_password.html> Click Here to if you forgot the password</a>
+
                 </div>
-              
+               
                 </div>
 			</div>
 		</div>
 	</div>
-	<div class="footer">
+	
+
+
+
+
+
+
+
+
+
+<div class="footer">
 		<div class="container">
 			<div class="col-md-3 footer-grid">
 				<h3>About us</h3>
