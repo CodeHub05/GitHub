@@ -7,9 +7,8 @@ The aim is to create a fully functional website based on the car wash functional
 which helps to utilise the open source facility and the github repository for learning. 
 Anyone interested to join and improve the codes are welcome.
 Can contribute as they wish from coding to documentation.  
-We require help on coding as well as documentation.
 Validating, testing, debugging and documentation are our current issues.
-There are no isses posfted but can email directly to the repository owner.
+There are no issues posted yet but can email directly to the repository owner.
 
 Email: codehub05@gmail.com
 Fell free to contact and to help improve the sample project. Issues will be given after you email and contact us.
