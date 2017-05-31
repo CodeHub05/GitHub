@@ -1,4 +1,5 @@
-# GitHub
+# GitHub- PHP project
+
 
 This is a sample project on PHP coding and github management. 
 The project is based on a car wash website as a dynamic website. 
